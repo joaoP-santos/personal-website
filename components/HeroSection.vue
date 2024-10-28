@@ -92,34 +92,3 @@
     </div>
   </section>
 </template>
-
-<script setup>
-import { useHead } from "@vueuse/head";
-
-useHead({
-  title: "João Pedro Santos",
-  meta: [
-    {
-      name: "description",
-      content: "João Pedro Marques Santos's personal website.",
-    },
-    {
-      name: "keywords",
-      content:
-        "Education, technology, AI, web development, social impact, programming",
-    },
-    {
-      property: "og:title",
-      content: "João Pedro Santos",
-    },
-    {
-      property: "og:description",
-      content: "João Pedro Marques Santos's personal website.",
-    },
-    {
-      property: "og:url",
-      content: "https://joaopedrosantos.com",
-    },
-  ],
-});
-</script>
