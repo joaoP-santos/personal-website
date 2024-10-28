@@ -16,6 +16,9 @@ export default {
       textColor: {
         primary: "#00ccff",
       },
+      fontFamily: {
+        sans: ["Outfit", "sans-serif"],
+      },
     },
   },
   plugins: [],
