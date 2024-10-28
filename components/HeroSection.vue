@@ -38,7 +38,7 @@
           ></div>
           <img
             class="relative rounded-full size-48 border-2 border-white/20 object-cover transition duration-500 group-hover:border-primary"
-            src="/profile.jpg"
+            src="/profilepic.jpg"
             alt="João Pedro"
           />
         </div>
