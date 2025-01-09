@@ -1,5 +1,5 @@
 <template>
-  <section id="#portfolio" class="py-20 bg-black">
+  <section id=".portfolio" class="py-20 bg-black">
     <div class="container mx-auto px-4">
       <!-- Section Header -->
       <div class="text-center mb-16">
@@ -10,84 +10,68 @@
       </div>
 
       <!-- Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
           v-for="project in projects"
-          :key="project.id"
-          class="group relative overflow-hidden rounded-xl bg-neutral-900/50 border border-neutral-800 hover:border-primary/50 transition-all duration-500"
+          :key="projects.find(project) + 1"
+          class="project-card group relative p-4 rounded-lg bg-neutral-900/50 border border-neutral-800 hover:border-primary/50 overflow-hidden flex flex-col justify-between h-full"
         >
-          <!-- Project Container -->
-          <div class="p-8">
-            <!-- Project Content -->
-            <div class="space-y-4">
-              <!-- Title -->
-              <h3
-                class="text-2xl font-bold text-white group-hover:text-primary transition-colors"
-              >
-                {{ project.title }}
-              </h3>
+          <div>
+            <h3
+              class="text-xl font-bold text-white group-hover:text-primary transition-colors mb-2"
+            >
+              {{ project.title }}
+            </h3>
 
-              <!-- Description -->
-              <p
-                class="text-gray-400 line-clamp-3 group-hover:line-clamp-none transition-all duration-500"
-              >
-                {{ project.description }}
-              </p>
-
-              <!-- Links -->
-              <div class="flex items-center gap-6 pt-6">
-                <a
-                  v-if="project.liveUrl"
-                  :href="project.liveUrl"
-                  target="_blank"
-                  class="inline-flex items-center gap-2 text-white hover:text-primary transition-colors group/link"
-                >
-                  <span>Live preview</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </a>
-                <a
-                  v-if="project.githubUrl"
-                  :href="project.githubUrl"
-                  target="_blank"
-                  class="inline-flex items-center gap-2 text-white hover:text-primary transition-colors group/link"
-                >
-                  <span>View code</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
+            <p class="text-sm text-gray-400 transition-all">
+              {{ project.description }}
+            </p>
           </div>
-
-          <!-- Decorative Corner -->
-          <div
-            class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 via-transparent to-transparent"
-          ></div>
+          <!-- Links -->
+          <div class="flex items-center gap-4 pt-2 text-sm">
+            <a
+              v-if="project.liveUrl"
+              :href="project.liveUrl"
+              target="_blank"
+              class="inline-flex items-center gap-1 text-white hover:text-primary transition-colors"
+            >
+              <span>Live Demo</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+            <a
+              v-if="project.url"
+              :href="project.url"
+              target="_blank"
+              class="inline-flex items-center gap-1 text-white hover:text-primary transition-colors"
+            >
+              <span>Code</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -102,7 +86,7 @@ const projects = ref([
     description:
       "A education platform for teaching Sign Language through pratical, interactive lessons that use computer vision to the detect the user's signs.",
     liveUrl: "https://signlangrecog.vercel.app",
-    githubUrl: "https://github.com/joaoP-santos/signlangrecog",
+    url: "https://github.com/joaoP-santos/signlangrecog",
   },
   {
     id: 2,
@@ -110,7 +94,7 @@ const projects = ref([
     description:
       "A multidisciplinary repository of interactive learning simulators and animations for students and teachers.",
     liveUrl: "https://skarn.fun",
-    githubUrl: "https://github.com/joaoP-santos/skarn",
+    url: "https://github.com/joaoP-santos/skarn",
   },
   {
     id: 3,
@@ -119,11 +103,29 @@ const projects = ref([
       "An open community website for students seeking for extracurricular activities and volunteer opportunities. On development.",
   },
   {
-    id: 4,
     title: "Personal Website",
     description:
       "This very website you're in! A gate to my projects, articles and contact means.",
-    githubUrl: "https://github.com/joaoP-santos/personal-website",
+    url: "https://github.com/joaoP-santos/personal-website",
+  },
+  {
+    title: "LSA4-LSTM",
+    description:
+      "A replicate I made of an LSTM neural network specialized in performing word-level sign language recognition for 4 different signs of the Argentinian Sign Language.",
+    url: "https://www.kaggle.com/code/j0aopsantos/lsa64-mediapipe",
   },
 ]);
 </script>
+
+<style scoped>
+.project-card {
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+}
+</style>

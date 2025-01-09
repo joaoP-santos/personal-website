@@ -10,17 +10,17 @@
       <div
         class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 text-center space-x-8"
       >
-        <NuxtLink
+        <span
           v-for="item in menuItems"
           :key="item.link"
-          :to="item.link"
-          class="text-white/90 hover:text-primary text-center transition-colors relative group"
+          @click="scrollToSection(item.link)"
+          class="text-white/90 hover:text-primary text-center transition-colors cursor-auto relative group"
         >
           {{ item.text }}
           <span
             class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
           ></span>
-        </NuxtLink>
+        </span>
       </div>
       <Socials />
     </div>
@@ -29,9 +29,18 @@
 
 <script setup>
 const menuItems = [
-  { text: "ABOUT ME", link: "#about" },
-  { text: "PORTFOLIO", link: "#portfolio" },
-  { text: "BLOG", link: "#articles" },
-  { text: "CONTACT", link: "#contact" },
+  { text: "ABOUT ME", link: "about" },
+  { text: "PORTFOLIO", link: "portfolio" },
+  { text: "BLOG", link: "articles" },
+  { text: "CONTACT", link: "contact" },
 ];
+
+function a() {
+  function scrollToSection(link) {
+    const section = document.querySelector(`#${link}`);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+}
 </script>

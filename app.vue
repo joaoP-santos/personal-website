@@ -9,11 +9,6 @@
 </template>
 
 <script setup>
-function scrollToSection(sectionId) {
-  const section = document.querySelector(sectionId);
-  section.scrollIntoView({ behavior: "smooth" });
-}
-
 useHead({
   title: "João Pedro Santos",
   meta: [

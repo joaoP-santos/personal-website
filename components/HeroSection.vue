@@ -54,10 +54,11 @@
         </p>
 
         <!-- Call to action -->
+        <!--
         <div class="mt-8 flex gap-6">
           <a
             class="px-8 py-3 bg-primary text-white rounded-full hover:bg-blue-600 transition-colors duration-300"
-            @click.prevent="scrollToSection('projects')"
+            @click="$scrollToSection('#projects')"
           >
             View Projects
           </a>
@@ -68,8 +69,8 @@
             Contact Me
           </a>
         </div>
+              -->
       </div>
-
       <!-- Scroll indicator -->
       <div
         class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
