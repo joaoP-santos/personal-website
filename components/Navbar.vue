@@ -35,12 +35,10 @@ const menuItems = [
   { text: "CONTACT", link: "contact" },
 ];
 
-function a() {
-  function scrollToSection(link) {
-    const section = document.querySelector(`#${link}`);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+function scrollToSection(link) {
+  const section = document.querySelector(`#${link}`);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
   }
 }
 </script>
