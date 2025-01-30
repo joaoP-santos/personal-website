@@ -10,17 +10,15 @@
       <div
         class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 text-center space-x-8"
       >
-        <span
-          v-for="item in menuItems"
-          :key="item.link"
-          @click="scrollToSection(item.link)"
-          class="text-white/90 hover:text-primary text-center transition-colors cursor-auto relative group"
+        <a
+          v-for="item in navItems"
+          :key="item.text"
+          @click="scrollToSection(item.href)"
+          :href="item.href"
+          class="text-white hover:text-primary transition-colors cursor-pointer"
         >
           {{ item.text }}
-          <span
-            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
-          ></span>
-        </span>
+        </a>
       </div>
       <Socials />
     </div>
@@ -28,17 +26,18 @@
 </template>
 
 <script setup>
-const menuItems = [
-  { text: "ABOUT ME", link: "about" },
-  { text: "PORTFOLIO", link: "portfolio" },
-  { text: "BLOG", link: "articles" },
-  { text: "CONTACT", link: "contact" },
+const navItems = [
+  { text: "ABOUT", href: "#about" },
+  { text: "PROJECTS", href: "#portfolio" },
+  { text: "ARTICLES", href: "#articles" },
+  { text: "CONTACT", href: "#contact" },
 ];
 
-function scrollToSection(link) {
-  const section = document.querySelector(`#${link}`);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
+const scrollToSection = (href) => {
+  event.preventDefault();
+  const element = document.querySelector(href);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
   }
-}
+};
 </script>

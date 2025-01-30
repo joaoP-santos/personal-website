@@ -1,5 +1,5 @@
 <template>
-  <section id=".portfolio" class="py-20 bg-black">
+  <section id="portfolio" class="py-20 bg-black">
     <div class="container mx-auto px-4">
       <!-- Section Header -->
       <div class="text-center mb-16">
@@ -12,8 +12,8 @@
       <!-- Projects Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
-          v-for="project in projects"
-          :key="projects.find(project) + 1"
+          v-for="(project, index) in projects"
+          :key="project.id || index"
           class="project-card group relative p-4 rounded-lg bg-neutral-900/50 border border-neutral-800 hover:border-primary/50 overflow-hidden flex flex-col justify-between h-full"
         >
           <div>

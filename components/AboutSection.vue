@@ -1,5 +1,5 @@
 <template>
-  <section id="#about" class="bg-black pt-20 py-10">
+  <section id="about" class="bg-black pt-20 py-10">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <!-- Left Column - Image -->
@@ -28,6 +28,7 @@
 
           <!-- Contact Button -->
           <button
+            @click="scrollToContact"
             class="bg-primary text-white px-8 py-3 rounded-md hover:bg-blue-600 font-semibold transition-colors"
           >
             CONTACT ME
@@ -37,3 +38,12 @@
     </div>
   </section>
 </template>
+
+<script setup>
+const scrollToContact = () => {
+  const contactSection = document.querySelector("#contact");
+  if (contactSection) {
+    contactSection.scrollIntoView({ behavior: "smooth" });
+  }
+};
+</script>

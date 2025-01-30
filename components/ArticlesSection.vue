@@ -1,5 +1,5 @@
 <template>
-  <section id="#articles" v-if="!loading" class="bg-black py-10">
+  <section id="articles" v-if="!loading" class="bg-black py-10">
     <div v-if="error">Error loading articles.</div>
     <div v-else class="container mx-auto px-4">
       <!-- Section Header -->
@@ -13,7 +13,11 @@
       <!-- Articles Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Article Card (Repeated for each article) -->
-        <div v-for="(article, index) in articles" :key="index" class="group">
+        <div
+          v-for="(article, index) in paginatedArticles"
+          :key="index"
+          class="group"
+        >
           <a
             :href="article.link"
             target="_blank"
@@ -60,6 +64,23 @@
           </a>
         </div>
       </div>
+
+      <!-- Pagination -->
+      <div v-if="totalPages > 1" class="flex justify-center mt-8 gap-2">
+        <button
+          v-for="page in totalPages"
+          :key="page"
+          @click="currentPage = page"
+          class="px-4 py-2 rounded-lg transition-colors bg-neutral-900"
+          :class="
+            page === currentPage
+              ? 'text-primary'
+              : 'text-white hover:text-primary'
+          "
+        >
+          {{ page }}
+        </button>
+      </div>
     </div>
   </section>
   <div v-else class="bg-black py-10">
@@ -70,7 +91,22 @@
 </template>
 
 <script setup>
+import { ref, computed } from "vue";
+import { useBlogArticles } from "../composables/useBlogArticles";
+
 const { articles, loading, error, fetchArticles } = useBlogArticles();
+const currentPage = ref(1);
+const itemsPerPage = 3;
+
+const totalPages = computed(() =>
+  Math.ceil(articles.value.length / itemsPerPage)
+);
+
+const paginatedArticles = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return articles.value.slice(start, end);
+});
 
 onMounted(() => {
   fetchArticles();

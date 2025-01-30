@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { Twitter, Instagram, Medium, Linkedin, Substack } from "@iconoir/vue";
+import { Twitter, Instagram, Medium, Linkedin } from "@iconoir/vue";
 
 defineProps({
   size: {

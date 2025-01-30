@@ -13,12 +13,18 @@
       <div
         class="flex flex-row flex-wrap gap-x-24 gap-4 items-center justify-center"
       >
-        <img
-          v-for="org in orgs"
-          :src="org.logo"
-          :alt="org.name"
-          class="max-w-[200px] max-h-[120px] opacity-70 hover:opacity-100 transition-opacity duration-300"
-        />
+        <div v-for="org in orgs" class="relative group">
+          <img
+            :src="org.logo"
+            :alt="org.name"
+            class="max-w-[200px] max-h-[120px] opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+          />
+          <div
+            class="tooltip opacity-0 group-hover:opacity-100 absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-neutral-900 text-white text-sm py-1 px-3 rounded whitespace-nowrap pointer-events-none"
+          >
+            {{ org.name }}
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -33,5 +39,18 @@ const orgs = ref([
   { name: "Sebrae", logo: "/sebrae.png" },
   { name: "Digital Promise", logo: "/digitalpromise.png" },
   { name: "U.S. Embassy and Consulates in Brazil", logo: "/usembassy.png" },
+  { name: "Latin America Leadership Academy", logo: "/lala.png" },
 ]);
 </script>
+
+<style scoped>
+.tooltip {
+  transition: all 0.2s ease;
+}
+
+@media (hover: none) {
+  .group:active .tooltip {
+    opacity: 1;
+  }
+}
+</style>

@@ -48,10 +48,13 @@ export const useBlogArticles = () => {
   const fetchMediumArticles = async () => {
     try {
       const timestamp = new Date().getTime();
-      const response = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@santosjoaopedro&timestamp=${timestamp}`
-      );
+      const url = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@santosjoaopedro&timestamp=${timestamp}`;
+      console.log("Fetching Medium articles from:", url);
+
+      const response = await fetch(url);
       const data = await response.json();
+
+      console.log("Medium API response:", data);
 
       if (data.status === "ok") {
         return data.items.map((item) => ({
@@ -69,9 +72,9 @@ export const useBlogArticles = () => {
           source: "medium",
         }));
       }
-      return [];
+      throw new Error(`Medium API returned status: ${data.status}`);
     } catch (e) {
-      console.error("Failed to fetch Medium articles:", e);
+      console.error("Medium fetch error:", e);
       return [];
     }
   };
@@ -112,17 +115,32 @@ export const useBlogArticles = () => {
     error.value = null;
 
     try {
+      console.log("Starting article fetch...");
       const [mediumArticles, substackArticles] = await Promise.all([
         fetchMediumArticles(),
         fetchSubstackArticles(),
       ]);
 
+      if (!mediumArticles.length && !substackArticles.length) {
+        // Fallback content if both APIs fail
+        articles.value = [
+          {
+            title: "My Latest Medium Article",
+            description: "Check out my articles directly on Medium",
+            link: "https://medium.com/@santosjoaopedro",
+            pubDate: new Date().toLocaleDateString(),
+            source: "medium",
+          },
+        ];
+        throw new Error("No articles fetched");
+      }
+
       articles.value = [...mediumArticles, ...substackArticles].sort((a, b) => {
         return new Date(b.pubDate) - new Date(a.pubDate);
       });
     } catch (e) {
-      error.value = "Failed to fetch articles";
-      console.error(e);
+      error.value = e.message;
+      console.error("Article fetch error:", e);
     } finally {
       loading.value = false;
     }
