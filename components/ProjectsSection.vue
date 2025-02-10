@@ -81,7 +81,6 @@
 <script setup>
 const projects = ref([
   {
-    id: 1,
     title: "Gestus",
     description:
       "A education platform for teaching Sign Language through pratical, interactive lessons that use computer vision to the detect the user's signs.",
@@ -89,7 +88,6 @@ const projects = ref([
     url: "https://github.com/joaoP-santos/signlangrecog",
   },
   {
-    id: 2,
     title: "Skarn",
     description:
       "A multidisciplinary repository of interactive learning simulators and animations for students and teachers.",
@@ -97,7 +95,6 @@ const projects = ref([
     url: "https://github.com/joaoP-santos/skarn",
   },
   {
-    id: 3,
     title: "Access+",
     description:
       "An open community website for students seeking for extracurricular activities and volunteer opportunities. On development.",
@@ -113,6 +110,12 @@ const projects = ref([
     description:
       "A replicate I made of an LSTM neural network specialized in performing word-level sign language recognition for 4 different signs of the Argentinian Sign Language.",
     url: "https://www.kaggle.com/code/j0aopsantos/lsa64-mediapipe",
+  },
+  {
+    title: "Text2Gloss Translator",
+    description:
+      "An AI that translates from English text to American Sign Language - ASL - gloss, the written representation of sign language.",
+    url: "https://www.kaggle.com/code/j0aopsantos/transformer-aslg-pc12/output",
   },
 ]);
 </script>
