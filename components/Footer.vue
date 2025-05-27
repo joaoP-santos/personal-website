@@ -14,8 +14,7 @@
 
           <p class="text-white/80 max-w-md">
             Feel free to reach out for collaborations, questions, or just to say
-            hello! I'm always excited to connect with fellow education and
-            technology enthusiasts.
+            hello! I'm always excited to have meaningful connections.
           </p>
           <div class="space-y-1">
             <!-- Email -->
@@ -31,11 +30,8 @@
               class="flex items-center gap-2 text-white/90 hover:text-primary transition-colors"
             >
               <Calendar class="w-5 h-5" />
-              <a
-                href="https://calendly.com/santosjoaopedroms/braindate"
-                target="_blank"
-              >
-                Schedule a call through Calendly
+              <a href="https://cal.com/joaopedrosantos/1-1" target="_blank">
+                Schedule a call through Cal.com
               </a>
             </div>
           </div>
@@ -53,7 +49,7 @@
           </h2>
           <p class="text-white/80 max-w-md">
             Subscribe to my newsletter to receive updates about my latest
-            projects and insights about education and technology.
+            projects and insights.
           </p>
           <iframe
             src="https://santosjoaopedro.substack.com/embed"

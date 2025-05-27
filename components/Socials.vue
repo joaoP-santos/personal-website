@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { Twitter, Instagram, Medium, Linkedin } from "@iconoir/vue";
+import { Twitter, Instagram, Medium, Linkedin, Github } from "@iconoir/vue";
 
 defineProps({
   size: {
@@ -38,6 +38,11 @@ const socialLinks = [
     platform: "medium",
     icon: Medium,
     link: "https://medium.com/@santosjoaopedro",
+  },
+  {
+    platform: "github",
+    icon: Github,
+    link: "https://github.com/joaoP-santos",
   },
 ];
 </script>
